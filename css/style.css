@@ -1,0 +1,67 @@
+/* =====================================================================
+   style.css — versión "Bootstrap-first"
+   Aquí SOLO va lo que Bootstrap no puede resolver con sus clases:
+   1) la paleta de marca (sobreescribiendo variables de Bootstrap)
+   2) medidas exactas en px que no existen en la escala de Bootstrap
+   3) detalles visuales únicos (el borde activo del menú lateral)
+
+   ===================================================================== */
+
+/* ---------- 1) PALETA DE MARCA -----------------------------------
+   Bootstrap construye TODOS sus componentes (botones, alerts, links,
+   bordes...) a partir de estas variables CSS. Si las cambiamos aquí,
+   "btn-primary", "text-primary", "border-primary", etc. en TODO el
+   sitio usan automáticamente tu morado/índigo, sin tocar cada clase. */
+:root {
+  --bs-primary: #4f46e5;
+  --bs-primary-rgb: 79, 70, 229;
+  --bs-primary-text-emphasis: #4338ca;
+  --bs-gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
+
+  /* el gris-oscuro del sidebar, reemplaza el --bs-dark por defecto */
+  --bs-dark: #1f2937;
+  --bs-dark-rgb: 31, 41, 55;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: #4338ca;
+  --bs-btn-hover-border-color: #4338ca;
+  --bs-btn-active-bg: #4338ca;
+  --bs-btn-active-border-color: #4338ca;
+}
+
+/* ---------- 2) MEDIDAS EXACTAS QUE NO ESTÁN EN LA ESCALA DE BOOTSTRAP --
+   Bootstrap trae anchos típicos (25%, 50%, 100%...) pero no "230px"
+   o "380px" exactos. Para esos casos puntuales, una reglita propia. */
+.login-card {
+  width: 100%;
+  max-width: 380px;
+}
+
+.sidebar {
+  width: 230px;
+  background: var(--bs-dark);
+}
+
+/* ---------- 3) DETALLES VISUALES QUE BOOTSTRAP NO TRAE DE FÁBRICA ----
+   El indicador de "link activo" con borde izquierdo de color es un
+   capricho de diseño muy específico: no existe como utilidad. */
+.sidebar nav a.nav-link {
+  color: #d1d5db;
+  border-radius: 0;
+  border-left: 3px solid transparent;
+  padding: 12px 20px;
+}
+
+.sidebar nav a.nav-link:hover {
+  background: #374151;
+  color: #fff;
+}
+
+.sidebar nav a.nav-link.active {
+  background: #374151;
+  border-left-color: var(--bs-primary);
+  color: #fff;
+}
